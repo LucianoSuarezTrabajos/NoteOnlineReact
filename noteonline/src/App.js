@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Container, Navbar, Row, Col } from "react-bootstrap";
-// import AgregarNota from "./components/agregar"
-// import ListarNotas from "./components/listar"
+import AgregarNota from "./components/AgregarNota";
+import ListarNotas from "./components/ListarNota";
 import "./App.css";
 
 function App() {
   const [notaId, setNotasId] = useState("");
 
-  const getNotasIdHandle = (id) => {
+  const leerNotaId = (id) => {
     console.log("EL ID de nota a editar es: ", id);
     setNotasId(id);
   };
@@ -24,17 +24,19 @@ function App() {
       <Container style={{ width: "400px" }}>
         <Row>
           <Col>
-            <AddBook id={notaId} setBookId={setNotasId} />
+            <AgregarNota id={notaId} setBookId={setNotasId} />
           </Col>
         </Row>
       </Container>
       <Container>
         <Row>
           <Col>
-            <BooksList getBookId={getNotasIdHandle} />
+            <ListarNotas leerNotaId={leerNotaId} />
           </Col>
         </Row>
       </Container>
     </>
   );
 }
+
+export default App;

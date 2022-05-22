@@ -19,7 +19,7 @@ const notaCollectionRef = collection(db, "nota");
 // Class que maneja el CRUD de notas
 class ServicioDatoNota {
   //  Agreagar una nota
-  agregarNotas = (nuevaNota) => {
+  agregarNota = (nuevaNota) => {
     return addDoc(notaCollectionRef, nuevaNota);
   };
   // Actualizar notas
@@ -29,7 +29,7 @@ class ServicioDatoNota {
   };
 
   // Eliminar una nota recibiendo su id como parametro
-  deleteNota = (id) => {
+  eliminarNota = (id) => {
     const notaDoc = doc(db, "notas", id);
     return deleteDoc(notaDoc);
   };
