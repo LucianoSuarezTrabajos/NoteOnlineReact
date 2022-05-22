@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import ServicioDatoNota from "../services/nota.services";
@@ -25,7 +24,7 @@ const ListarNotas = ({ leerNotaId }) => {
   return (
     <>
       <div className="mb-2">
-        <Button variant="dark edit" onClick={getBooks}>
+        <Button variant="dark edit" onClick={leerNotas}>
           Refresh List
         </Button>
       </div>
@@ -73,3 +72,5 @@ const ListarNotas = ({ leerNotaId }) => {
     </>
   );
 };
+
+export default ListarNotas;

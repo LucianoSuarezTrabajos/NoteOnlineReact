@@ -1,5 +1,6 @@
-import { db } from "../firebase-config";
+import { bd } from "../firebase-config";
 // importa la base de datos que trae de firebase
+// Manejo de datos de firebase
 import {
   collection,
   getDocs,
@@ -14,9 +15,9 @@ import {
 // https://firebase.google.com/docs/firestore/data-model
 
 // obtener referencias de documentos
-const notaCollectionRef = collection(db, "nota");
+const notaCollectionRef = collection(bd, "notes");
 
-// Class que maneja el CRUD de notas
+// maneja el CRUD de notas
 class ServicioDatoNota {
   //  Agreagar una nota
   agregarNota = (nuevaNota) => {
@@ -24,13 +25,13 @@ class ServicioDatoNota {
   };
   // Actualizar notas
   actualizarNota = (id, actualizarNota) => {
-    const notaDoc = doc(db, "notas", id);
+    const notaDoc = doc(bd, "notas", id);
     return updateDoc(notaDoc, actualizarNota);
   };
 
   // Eliminar una nota recibiendo su id como parametro
   eliminarNota = (id) => {
-    const notaDoc = doc(db, "notas", id);
+    const notaDoc = doc(bd, "notas", id);
     return deleteDoc(notaDoc);
   };
 
@@ -41,7 +42,7 @@ class ServicioDatoNota {
 
   // Leer una nota en especifico por id
   leerNota = (id) => {
-    const notaDoc = doc(db, "notas", id);
+    const notaDoc = doc(bd, "notas", id);
     return getDoc(notaDoc);
   };
 }

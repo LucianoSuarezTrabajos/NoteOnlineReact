@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+
 const firebaseConfig = {
   apiKey: "AIzaSyDLx9bo3pLD0XrNkNgWa7AOOGRQr_Bl27g",
   authDomain: "reactnote-cd545.firebaseapp.com",
@@ -13,5 +14,4 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 export const bd = getFirestore(app);

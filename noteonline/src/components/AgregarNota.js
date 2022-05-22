@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import React, { useState, useEffect } from "react";
 import {
   Form,
@@ -87,7 +86,7 @@ const AgregarNota = ({ id, setNoteId }) => {
           <Alert
             variant={mensaje?.error ? "danger" : "success"}
             dismissible // habilita la funcion de cerrar la notificacion
-            onClose={() => setMessage("")} // al cerrar el msg se vacia
+            onClose={() => setMensaje("")} // al cerrar el msg se vacia
           >
             {mensaje?.msg}
           </Alert>
@@ -134,7 +133,7 @@ const AgregarNota = ({ id, setNoteId }) => {
               variant="danger"
               disabled={!flag}
               onClick={(e) => {
-                setStatus("Completado");
+                setEstado("Completado");
                 setFlag(false);
               }}
             >
