@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
+// Configuracion de Base de datos
 const firebaseConfig = {
   apiKey: "AIzaSyDLx9bo3pLD0XrNkNgWa7AOOGRQr_Bl27g",
   authDomain: "reactnote-cd545.firebaseapp.com",

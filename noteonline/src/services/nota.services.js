@@ -25,13 +25,13 @@ class ServicioDatoNota {
   };
   // Actualizar notas
   actualizarNota = (id, actualizarNota) => {
-    const notaDoc = doc(bd, "notas", id);
+    const notaDoc = doc(bd, "notes", id);
     return updateDoc(notaDoc, actualizarNota);
   };
 
   // Eliminar una nota recibiendo su id como parametro
   eliminarNota = (id) => {
-    const notaDoc = doc(bd, "notas", id);
+    const notaDoc = doc(bd, "notes", id);
     return deleteDoc(notaDoc);
   };
 
@@ -42,7 +42,7 @@ class ServicioDatoNota {
 
   // Leer una nota en especifico por id
   leerNota = (id) => {
-    const notaDoc = doc(bd, "notas", id);
+    const notaDoc = doc(bd, "notes", id);
     return getDoc(notaDoc);
   };
 }

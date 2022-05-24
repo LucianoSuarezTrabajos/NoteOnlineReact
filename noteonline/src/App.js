@@ -16,7 +16,7 @@ function App() {
       <Navbar bg="dark" variant="dark" className="header">
         <Container>
           <Navbar.Brand href="#home">
-            Usando Firebase para almacenar notas
+            Proyecto Notas en Firebase
           </Navbar.Brand>
         </Container>
       </Navbar>
