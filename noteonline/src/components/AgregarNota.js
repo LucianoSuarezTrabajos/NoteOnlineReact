@@ -83,7 +83,7 @@ const AgregarNota = ({ id, setNotaId }) => {
     <>
       <div className="p-4 box text-center">
         {mensaje?.msg && (
-          // varienate de alerta con React-Boostrap
+          // alerta con React-Boostrap
           <Alert
             variant={mensaje?.error ? "danger" : "success"}
             dismissible // habilita la funcion de cerrar la notificacion
