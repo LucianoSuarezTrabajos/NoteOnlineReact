@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import ServicioDatoNota from "../services/nota.services";
 
-const AgregarNota = ({ id, setNoteId }) => {
+const AgregarNota = ({ id, setNotaId }) => {
   // Incializando estados
   const [titulo, setTitulo] = useState("");
   const [cuerpo, setCuerpo] = useState("");
@@ -42,7 +42,7 @@ const AgregarNota = ({ id, setNoteId }) => {
     try {
       if (id !== undefined && id !== "") {
         await ServicioDatoNota.actualizarNota(id, nuevaNota);
-        setNoteId("");
+        setNotaId("");
         setMensaje({
           error: false,
           msg: "La nota se actualizo de forma correcta",
@@ -58,10 +58,10 @@ const AgregarNota = ({ id, setNoteId }) => {
     setCuerpo("");
   };
 
-  const editHandler = async () => {
+  const editarNota = async () => {
     setMensaje("");
     try {
-      const docNota = ServicioDatoNota.leerNota(id);
+      const docNota = await ServicioDatoNota.leerNota(id);
       console.log("lo que se va a guardar es: ", docNota.data());
       // Seteando estados con datos
       setTitulo(docNota.data().titulo);
@@ -75,13 +75,13 @@ const AgregarNota = ({ id, setNoteId }) => {
   useEffect(() => {
     console.log("El id es: ", id); // muestro el id
     if (id !== undefined && id !== "") {
-      editHandler();
+      editarNota();
     }
     //eslint-disable-next-line
   }, [id]);
   return (
     <>
-      <div className="p-4 box">
+      <div className="p-4 box text-center">
         {mensaje?.msg && (
           // varienate de alerta con React-Boostrap
           <Alert
@@ -97,10 +97,10 @@ const AgregarNota = ({ id, setNoteId }) => {
           {/* TITULO DE NOTA */}
           <Form.Group className="mb-3" controlId="formTituloNota">
             <InputGroup>
-              <InputGroup.Text id="formTituloNota">B</InputGroup.Text>
+              <InputGroup.Text id="formTituloNota">Titulo</InputGroup.Text>
               <FormControl
                 type="text"
-                placeholder="Titulo de Nota"
+                placeholder="Ingrese el titulo de nota"
                 value={titulo}
                 onChange={(e) => setTitulo(e.target.value)}
               />
@@ -108,10 +108,13 @@ const AgregarNota = ({ id, setNoteId }) => {
           </Form.Group>
 
           {/* CUERPO DE  NOTA */}
-          <Form.Group className="mb-3" controlId="formCuerpoNota">
+          <Form.Group className="mb-2" controlId="formCuerpoNota">
             <InputGroup>
-              <InputGroup.Text id="formCuerpoNota">A</InputGroup.Text>
+              <InputGroup.Text id="formCuerpoNota">Nota</InputGroup.Text>
+
               <Form.Control
+                as="textarea"
+                aria-label="With textarea"
                 type="text"
                 placeholder="Ingrese la descripcion de la notas aquí..."
                 value={cuerpo}
@@ -119,10 +122,11 @@ const AgregarNota = ({ id, setNoteId }) => {
               />
             </InputGroup>
           </Form.Group>
-          <ButtonGroup aria-label="Basic example" className="mb-3">
+          <ButtonGroup aria-label="Basic example" size="mb" className="mb-3">
             <Button
+              size="lg"
               disabled={flag}
-              variant="success"
+              variant="danger"
               onClick={(e) => {
                 setEstado("Sin Completar");
                 setFlag(true);
@@ -131,7 +135,8 @@ const AgregarNota = ({ id, setNoteId }) => {
               Sin completar
             </Button>
             <Button
-              variant="danger"
+              size="lg"
+              variant="success"
               disabled={!flag}
               onClick={(e) => {
                 setEstado("Completado");
@@ -141,8 +146,8 @@ const AgregarNota = ({ id, setNoteId }) => {
               Completado
             </Button>
           </ButtonGroup>
-          <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
+          <div className="text-center bd-example d-grid gap-2">
+            <Button variant="primary" type="Submit" size="mb">
               Agregar o Actualizar
             </Button>
           </div>

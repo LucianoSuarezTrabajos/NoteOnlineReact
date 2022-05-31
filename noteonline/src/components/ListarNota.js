@@ -29,11 +29,10 @@ const ListarNotas = ({ leerNotaId }) => {
         </Button>
       </div>
 
-      {/* <pre>{JSON.stringify(books, undefined, 2)}</pre>} */}
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>#</th>
+            <th>Nº</th>
             <th>Titulo</th>
             <th>Cuerpo de Nota</th>
             <th>Estado</th>
@@ -45,6 +44,7 @@ const ListarNotas = ({ leerNotaId }) => {
             return (
               <tr key={doc.id}>
                 <td>{index + 1}</td>
+                {/* al index se le suma 1 ya que inicia con el contador 0 */}
                 <td>{doc.titulo}</td>
                 <td>{doc.cuerpo}</td>
                 <td>{doc.estado}</td>
